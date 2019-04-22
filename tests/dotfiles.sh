@@ -1,9 +1,12 @@
-#!/usr/bin/env bats
+#!/usr/bin/env bash
 set -euo pipefail
 IFS=$'\n\t'
 
-if ! docker ps | grep dotfiles_tests; then
-  docker run -di --name dotfiles_tests fedora:29 bash
-fi
+date +%s >RSTCACHE
 
-docker exec -ti dotfiles_tests dnf install git -y
+docker build -t dotfiles_tests .
+if docker ps -a | awk '{print $NF}' | grep dotfiles_tests; then
+  docker rm -f dotfiles_tests
+fi
+docker run --name="dotfiles_tests" -id dotfiles_tests bash
+docker exec -ti dotfiles_tests bash -c "cd dotfiles && ls -al && make all"
