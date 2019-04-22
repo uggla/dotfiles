@@ -1,11 +1,12 @@
 ---
+  language: minimal
   sudo: required
   notifications:
     email: true
   services:
     - docker
   script:
-    - make test
+    - make tests
   # Handle git submodules yourself
   git:
     submodules: false
