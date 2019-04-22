@@ -2,9 +2,17 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-sudo yum install -y make stow bats
-for i in $(stow -nvv bash 2>&1 | grep CONFLICT | awk '{print $NF}'); do
-  mv "${HOME}/${i}" "${HOME}/${i}.bak"
-done
+backup_regular_file_and_stow() {
+  for i in $(stow -nvv "$1" 2>&1 | grep CONFLICT | awk '{print $NF}'); do
+    mv "${HOME}/${i}" "${HOME}/${i}.bak"
+  done
 
-stow bash
+  stow -v "$1"
+}
+
+main() {
+  sudo yum install -y make stow bats
+  backup_regular_file_and_stow bash
+}
+
+main
