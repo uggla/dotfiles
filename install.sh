@@ -7,6 +7,7 @@ backup_regular_file_and_stow() {
     mv "${HOME}/${i}" "${HOME}/${i}.bak"
   done
 
+  echo "Running stow on $1:"
   stow -v "$1"
 }
 
