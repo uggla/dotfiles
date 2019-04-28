@@ -2,6 +2,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+CURDIR=$(pwd)
+
 backup_regular_file_and_stow() {
   for i in $(stow -nvv "$1" 2>&1 | grep CONFLICT | awk '{print $NF}'); do
     mv "${HOME}/${i}" "${HOME}/${i}.bak"
@@ -11,8 +13,52 @@ backup_regular_file_and_stow() {
   stow -v "$1"
 }
 
+install_tools_via_packages() {
+  sudo yum install -y bind-utils \
+    curl \
+    gnupg2 \
+    neofetch \
+    net-tools \
+    ngrep \
+    openssh-clients \
+    openssl \
+    pdsh \
+    powerline \
+    procps-ng \
+    python \
+    sudo \
+    tmux-powerline \
+    tree \
+    vim \
+    xclip \
+    xdg-utils \
+    xorg-x11-utils
+}
+
+install_tools_via_git() {
+  if [[ -d ${HOME}/screenkey ]]; then
+    cd "${HOME}"
+    git clone https://gitlab.com/wavexx/screenkey.git
+    cd "${CURDIR}"
+  else
+    cd "${HOME}/screenkey"
+    git pull
+    cd "${CURDIR}"
+  fi
+}
+
+install_tools_via_curl() {
+  if [[ -f /usr/local/bin/bfg-1.13.0.jar ]]; then
+    curl https://repo1.maven.org/maven2/com/madgag/bfg/1.13.0/bfg-1.13.0.jar \
+      -o /usr/local/bin/bfg-1.13.0.jar
+  fi
+}
+
 main() {
   sudo yum install -y make stow bats
+  install_tools_via_packages
+  install_tools_via_git
+  install_tools_via_curl
   backup_regular_file_and_stow bash
 }
 

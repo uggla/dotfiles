@@ -37,7 +37,7 @@ tests: shellcheck docker_test ## Runs all the tests on the files in the reposito
 
 .PHONY: shellcheck
 shellcheck: ## Runs the shellcheck tests on the scripts.
-	./test.sh
+	./lint.sh
 
 .PHONY: docker_test
 docker_test:
