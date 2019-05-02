@@ -89,6 +89,8 @@ main() {
     install_tools_via_git
     install_tools_via_curl
     backup_regular_file_and_stow bash
+    # shellcheck source=/dev/null
+    source "${HOME}/.bashrc"
   elif [[ "${PART}" == "vim" ]]; then
     install_vim
     backup_regular_file_and_stow vim
