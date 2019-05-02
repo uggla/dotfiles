@@ -53,7 +53,7 @@ install_tools_via_git() {
 }
 
 install_tools_via_curl() {
-  if [[ -f /usr/local/bin/bfg-1.13.0.jar ]]; then
+  if [[ ! -f /usr/local/bin/bfg-1.13.0.jar ]]; then
     sudo curl \
       https://repo1.maven.org/maven2/com/madgag/bfg/1.13.0/bfg-1.13.0.jar \
       -o /usr/local/bin/bfg-1.13.0.jar
