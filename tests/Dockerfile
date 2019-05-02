@@ -6,4 +6,4 @@ RUN useradd -m -G wheel uggla
 USER uggla
 WORKDIR /home/uggla
 COPY RSTCACHE /dev/null
-RUN git clone https://github.com/uggla/dotfiles.git
+RUN git clone --recurse-submodules https://github.com/uggla/dotfiles.git

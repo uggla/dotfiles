@@ -22,6 +22,7 @@ install_tools_via_packages() {
   sudo yum install -y bind-utils \
     curl \
     gnupg2 \
+    java-1.8.0-openjdk \
     neofetch \
     net-tools \
     ngrep \
