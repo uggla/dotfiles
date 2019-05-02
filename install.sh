@@ -15,11 +15,11 @@ backup_regular_file_and_stow() {
 }
 
 install_vim() {
-  sudo yum install -y vim gvim
+  sudo dnf install -y vim gvim
 }
 
 install_tools_via_packages() {
-  sudo yum install -y bind-utils \
+  sudo dnf install -y bind-utils \
     curl \
     gnupg2 \
     java-1.8.0-openjdk \
@@ -61,7 +61,7 @@ install_tools_via_curl() {
 }
 
 install_languages_to_allow_completion() {
-  sudo dnf install cmake gcc-c++ make python3-devel golang node npm
+  sudo dnf install -y cmake gcc-c++ make python3-devel golang node npm
   if [[ ! -f "${HOME}/rust" ]]; then
     cd "${HOME}"
     curl https://sh.rustup.rs -sSf -o rust.sh
@@ -83,7 +83,7 @@ install_vim_plugins() {
 }
 
 main() {
-  sudo yum install -y make stow bats ShellCheck
+  sudo dnf install -y make stow bats ShellCheck
   if [[ "${PART}" == "bash" ]]; then
     install_tools_via_packages
     install_tools_via_git
