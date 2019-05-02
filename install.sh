@@ -36,7 +36,7 @@ install_tools_via_packages() {
 }
 
 install_tools_via_git() {
-  if [[ -d ${HOME}/screenkey ]]; then
+  if [[ ! -d ${HOME}/screenkey ]]; then
     cd "${HOME}"
     git clone https://gitlab.com/wavexx/screenkey.git
     cd "${CURDIR}"
