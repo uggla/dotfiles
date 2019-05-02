@@ -3,6 +3,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 CURDIR=$(pwd)
+PART=$1
 
 backup_regular_file_and_stow() {
   for i in $(stow -nvv "$1" 2>&1 | grep CONFLICT | awk '{print $NF}'); do
@@ -11,6 +12,10 @@ backup_regular_file_and_stow() {
 
   echo "Running stow on $1:"
   stow -v "$1"
+}
+
+install_vim() {
+  sudo yum install -y vim gvim
 }
 
 install_tools_via_packages() {
@@ -29,7 +34,6 @@ install_tools_via_packages() {
     sudo \
     tmux-powerline \
     tree \
-    vim \
     xclip \
     xdg-utils \
     xorg-x11-utils
@@ -57,10 +61,15 @@ install_tools_via_curl() {
 
 main() {
   sudo yum install -y make stow bats
-  install_tools_via_packages
-  install_tools_via_git
-  install_tools_via_curl
-  backup_regular_file_and_stow bash
+  if [[ "${PART}" == "bash" ]]; then
+    install_tools_via_packages
+    install_tools_via_git
+    install_tools_via_curl
+    backup_regular_file_and_stow bash
+  elif [[ "${PART}" == "vim" ]]; then
+    install_vim
+    backup_regular_file_and_stow vim
+  fi
 }
 
 main

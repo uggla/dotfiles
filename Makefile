@@ -1,6 +1,6 @@
 .PHONY: all
 # all: bin dotfiles etc ## Installs the bin and etc directory files and the dotfiles.
-all: dotfiles ## Installs the bin and etc directory files and the dotfiles.
+all: dotfiles vim## Installs the bin and etc directory files and the dotfiles.
 
 .PHONY: bin
 bin: ## Installs the bin directory files.
@@ -12,10 +12,11 @@ bin: ## Installs the bin directory files.
 
 .PHONY: dotfiles
 dotfiles: ## Installs the dotfiles.
-	./install.sh
+	./install.sh bash
 
 .PHONY: vim
 vim: ## Installs the vim plugins
+	./install.sh vim
 	vim -c ":PlugStatus" -c ":qa!"
 
 .PHONY: etc
