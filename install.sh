@@ -70,7 +70,7 @@ main() {
   elif [[ "${PART}" == "vim" ]]; then
     install_vim
     backup_regular_file_and_stow vim
-    vim -c ":PlugInstall" -c ":qa!"
+    printf "\n" | vim -c ":PlugInstall" -c ":qa!"
   fi
 }
 
