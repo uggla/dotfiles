@@ -60,6 +60,28 @@ install_tools_via_curl() {
   fi
 }
 
+install_languages_to_allow_completion() {
+  sudo dnf install cmake gcc-c++ make python3-devel golang node npm
+  if [[ ! -f "${HOME}/rust" ]]; then
+    cd "${HOME}"
+    curl https://sh.rustup.rs -sSf -o rust.sh
+    sh rust.sh -y
+    rustup component add clippy
+    cargo install cargo-add
+    rm rust.sh
+    cd "${CURDIR}"
+  fi
+}
+
+install_vim_plugins() {
+  if [[ ! -f "${HOME}/.vim/plugged" ]]; then
+    cd vim
+    printf "\n" | vim -c ":PlugInstall" -c ":qa!"
+    ./YCM.sh
+    cd "${CURDIR}"
+  fi
+}
+
 main() {
   sudo yum install -y make stow bats ShellCheck
   if [[ "${PART}" == "bash" ]]; then
@@ -70,21 +92,9 @@ main() {
   elif [[ "${PART}" == "vim" ]]; then
     install_vim
     backup_regular_file_and_stow vim
-    printf "\n" | vim -c ":PlugInstall" -c ":qa!"
+    install_languages_to_allow_completion
+    install_vim_plugins
   fi
 }
 
 main
-
-#  26  02/05/19 21:46:35 sudo dnf install cmake gcc-c++ make python3-devel
-#  27  02/05/19 21:47:26 ./YCM.sh
-#  28  02/05/19 21:51:23 dnf search golang
-#  29  02/05/19 21:53:33 sudo dnf install golang
-#  30  02/05/19 21:55:02 ./YCM.sh
-#  31  02/05/19 21:55:43 sudo dnf install node npm
-#  32  02/05/19 21:56:06 ./YCM.sh
-#  33  02/05/19 21:56:48 dnf install cargo runst
-#  34  02/05/19 21:56:50 dnf install cargo runt
-#  35  02/05/19 21:56:56 sudo dnf install cargo runt
-#  36  02/05/19 21:57:02 sudo dnf install cargo rust
-#  37  02/05/19 21:57:54 ./YCM.sh
