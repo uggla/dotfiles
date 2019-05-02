@@ -17,7 +17,6 @@ dotfiles: ## Installs the dotfiles.
 .PHONY: vim
 vim: ## Installs the vim plugins
 	./install.sh vim
-	vim -c ":PlugStatus" -c ":qa!"
 
 .PHONY: etc
 etc: ## Installs the etc directory files.

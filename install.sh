@@ -61,7 +61,7 @@ install_tools_via_curl() {
 }
 
 main() {
-  sudo yum install -y make stow bats
+  sudo yum install -y make stow bats ShellCheck
   if [[ "${PART}" == "bash" ]]; then
     install_tools_via_packages
     install_tools_via_git
@@ -70,7 +70,21 @@ main() {
   elif [[ "${PART}" == "vim" ]]; then
     install_vim
     backup_regular_file_and_stow vim
+    vim -c ":PlugInstall" -c ":qa!"
   fi
 }
 
 main
+
+#  26  02/05/19 21:46:35 sudo dnf install cmake gcc-c++ make python3-devel
+#  27  02/05/19 21:47:26 ./YCM.sh
+#  28  02/05/19 21:51:23 dnf search golang
+#  29  02/05/19 21:53:33 sudo dnf install golang
+#  30  02/05/19 21:55:02 ./YCM.sh
+#  31  02/05/19 21:55:43 sudo dnf install node npm
+#  32  02/05/19 21:56:06 ./YCM.sh
+#  33  02/05/19 21:56:48 dnf install cargo runst
+#  34  02/05/19 21:56:50 dnf install cargo runt
+#  35  02/05/19 21:56:56 sudo dnf install cargo runt
+#  36  02/05/19 21:57:02 sudo dnf install cargo rust
+#  37  02/05/19 21:57:54 ./YCM.sh
