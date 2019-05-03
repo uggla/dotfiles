@@ -61,7 +61,7 @@ install_tools_via_curl() {
 }
 
 install_languages_to_allow_completion() {
-  sudo dnf install -y cmake gcc-c++ make python3-devel golang node npm
+  sudo dnf install -y cmake gcc-c++ make python2-devel python3-devel golang node npm
   if [[ ! -f "${HOME}/rust" ]]; then
     export "$(grep "CARGO_HOME" "${CURDIR}/bash/.exports" | awk '{print $NF}')"
     export "$(grep "RUSTUP_HOME" "${CURDIR}/bash/.exports" | awk '{print $NF}')"
