@@ -41,7 +41,7 @@ install_tools_via_packages() {
     xorg-x11-utils
 }
 
-install_tools_via_git() {
+install_screenkey_via_git() {
   if [[ ! -d ${HOME}/screenkey ]]; then
     cd "${HOME}"
     git clone https://gitlab.com/wavexx/screenkey.git
@@ -53,7 +53,19 @@ install_tools_via_git() {
   fi
 }
 
-install_tools_via_curl() {
+install_tpm_via_git() {
+  if [[ ! -d ${HOME}/.tmux/plugins/tpm ]]; then
+    cd "${HOME}/.tmux/plugins"
+    git clone https://github.com/tmux-plugins/tpm
+    cd "${CURDIR}"
+  else
+    cd "${HOME}/.tmux/plugins/tpm"
+    git pull
+    cd "${CURDIR}"
+  fi
+}
+
+install_bfg_via_curl() {
   if [[ ! -f bin/bfg-1.13.0.jar ]]; then
     mkdir -p bin
     curl \
@@ -92,8 +104,8 @@ main() {
   sudo dnf install -y make stow bats ShellCheck
   if [[ "${PART}" == "bash" ]]; then
     install_tools_via_packages
-    install_tools_via_git
-    install_tools_via_curl
+    install_screenkey_via_git
+    install_bfg_via_curl
     backup_regular_file_and_stow bash
     # shellcheck source=/dev/null
     source "${HOME}/.bashrc"
@@ -103,6 +115,7 @@ main() {
     install_languages_to_allow_completion
     install_vim_plugins
   elif [[ "${PART}" == "tmux" ]]; then
+    install_tpm_via_git
     backup_regular_file_and_stow tmux
   fi
 }
