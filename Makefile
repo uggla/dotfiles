@@ -1,6 +1,6 @@
 .PHONY: all
 # all: bin dotfiles etc ## Installs the bin and etc directory files and the dotfiles.
-all: dotfiles vim## Installs the bin and etc directory files and the dotfiles.
+all: tmux dotfiles vim## Installs the bin and etc directory files and the dotfiles.
 
 .PHONY: bin
 bin: ## Installs the bin directory files.
