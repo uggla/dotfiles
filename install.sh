@@ -63,12 +63,12 @@ install_tools_via_curl() {
 install_languages_to_allow_completion() {
   sudo dnf install -y cmake gcc-c++ make python3-devel golang node npm
   if [[ ! -f "${HOME}/rust" ]]; then
-    cd "${HOME}"
-    curl https://sh.rustup.rs -sSf -o rust.sh
-    sh rust.sh -y
     export "$(grep "CARGO_HOME" "${CURDIR}/bash/.exports" | awk '{print $NF}')"
     export "$(grep "RUSTUP_HOME" "${CURDIR}/bash/.exports" | awk '{print $NF}')"
     export PATH=$PATH:${HOME}/rust/bin
+    cd "${HOME}"
+    curl https://sh.rustup.rs -sSf -o rust.sh
+    sh rust.sh -y
     rustup component add clippy
     cargo install cargo-add
     rm rust.sh
