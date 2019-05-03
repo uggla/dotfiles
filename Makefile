@@ -2,25 +2,9 @@
 # all: bin dotfiles etc ## Installs the bin and etc directory files and the dotfiles.
 all: dotfiles etc bin tmux vim## Installs the bin and etc directory files and the dotfiles.
 
-.PHONY: bin
-bin: ## Installs the bin directory files.
-	# add aliases for things in bin
-	for file in $(shell find $(CURDIR)/bin -type f -not -name "*-backlight" -not -name ".*.swp"); do \
-		f=$$(basename $$file); \
-		sudo ln -sf $$file /usr/local/bin/$$f; \
-	done
-
 .PHONY: dotfiles
 dotfiles: ## Installs the dotfiles.
 	./install.sh bash
-
-.PHONY: vim
-vim: ## Installs the vim plugins
-	./install.sh vim
-
-.PHONY: tmux
-tmux: ## Installs the vim plugins
-	./install.sh tmux
 
 .PHONY: etc
 etc: ## Installs the etc directory files.
@@ -29,6 +13,22 @@ etc: ## Installs the etc directory files.
 		if [[ -f "$$f" ]]; then sudo mv "$$f" "$$f".bak; fi; \
 	 	sudo ln -sf "$$file" "$$f"; \
 	done
+
+.PHONY: bin
+bin: ## Installs the bin directory files.
+	# add aliases for things in bin
+	for file in $(shell find $(CURDIR)/bin -type f -not -name "*-backlight" -not -name ".*.swp"); do \
+		f=$$(basename $$file); \
+		sudo ln -sf $$file /usr/local/bin/$$f; \
+	done
+
+.PHONY: tmux
+tmux: ## Installs the vim plugins
+	./install.sh tmux
+
+.PHONY: vim
+vim: ## Installs the vim plugins
+	./install.sh vim
 
 .PHONY: tests
 tests: shellcheck docker_test ## Runs all the tests on the files in the repository.
