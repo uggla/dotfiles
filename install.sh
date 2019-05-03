@@ -68,6 +68,7 @@ install_languages_to_allow_completion() {
     sh rust.sh -y
     export "$(grep "CARGO_HOME" "${CURDIR}/bash/.exports" | awk '{print $NF}')"
     export "$(grep "RUSTUP_HOME" "${CURDIR}/bash/.exports" | awk '{print $NF}')"
+    export PATH=$PATH:${HOME}/rust/bin
     rustup component add clippy
     cargo install cargo-add
     rm rust.sh
