@@ -64,10 +64,11 @@ install_tools_via_curl() {
 
 install_languages_to_allow_completion() {
   sudo dnf install -y cmake gcc-c++ make python2-devel python3-devel golang node npm
-  if [[ ! -f "${HOME}/rust" ]]; then
-    export "$(grep "CARGO_HOME" "${CURDIR}/bash/.exports" | awk '{print $NF}')"
-    export "$(grep "RUSTUP_HOME" "${CURDIR}/bash/.exports" | awk '{print $NF}')"
-    export PATH=$PATH:${HOME}/rust/bin
+  export "$(grep "GOPATH" "${CURDIR}/bash/.exports" | awk '{print $NF}')"
+  export "$(grep "CARGO_HOME" "${CURDIR}/bash/.exports" | awk '{print $NF}')"
+  export "$(grep "RUSTUP_HOME" "${CURDIR}/bash/.exports" | awk '{print $NF}')"
+  export PATH=$PATH:${RUSTUP_HOME}/bin:${GOPATH}/bin
+  if [[ ! -d "${RUSTUP_HOME}" ]]; then
     cd "${HOME}"
     curl https://sh.rustup.rs -sSf -o rust.sh
     sh rust.sh -y
@@ -79,7 +80,7 @@ install_languages_to_allow_completion() {
 }
 
 install_vim_plugins() {
-  if [[ ! -f "${HOME}/.vim/plugged" ]]; then
+  if [[ ! -d "${HOME}/.vim/plugged" ]]; then
     cd vim
     printf "\n" | vim -c ":PlugInstall" -c ":qa!"
     ./YCM.sh
