@@ -1,13 +1,12 @@
 .PHONY: all
-# all: bin dotfiles etc ## Installs the bin and etc directory files and the dotfiles.
-all: dotfiles etc bin tmux vim## Installs the bin and etc directory files and the dotfiles.
+all: dotfiles etc bin tmux vim ## Installs the bin and etc directory files and the dotfiles.
 
 .PHONY: dotfiles
 dotfiles: ## Installs the dotfiles.
 	./install.sh bash
 
 .PHONY: etc
-etc: ## Installs the etc directory files.
+etc: ## Add aliases for things in etc
 	for file in $(shell find $(CURDIR)/etc -type f -not -name ".*.swp"); do \
 		f=$$(echo $$file | sed -e 's|$(CURDIR)||'); \
 		if [[ -f "$$f" ]]; then sudo mv "$$f" "$$f".bak; fi; \
@@ -15,34 +14,30 @@ etc: ## Installs the etc directory files.
 	done
 
 .PHONY: bin
-bin: ## Installs the bin directory files.
-	# add aliases for things in bin
+bin: ## Add aliases for things in bin.
 	for file in $(shell find $(CURDIR)/bin -type f -not -name "*-backlight" -not -name ".*.swp"); do \
 		f=$$(basename $$file); \
 		sudo ln -sf $$file /usr/local/bin/$$f; \
 	done
 
 .PHONY: tmux
-tmux: ## Installs the vim plugins
+tmux: ## Installs the tmux configuration.
 	./install.sh tmux
 
 .PHONY: vim
-vim: ## Installs the vim plugins
+vim: ## Installs the vim plugins and associated languages.
 	./install.sh vim
 
-.PHONY: test_install
-test_install: shellcheck test_docker ## Runs all the tests on the files in the repository.
+.PHONY: test_install_fedora
+test_install_fedora: shellcheck ## Run all tests and do an full installation within a Fedora container.
+	cd tests/fedora && ./test_dotfiles.sh
 
 .PHONY: shellcheck
 shellcheck: ## Runs the shellcheck tests on the scripts.
 	./lint.sh
 
-.PHONY: test_docker
-test_docker:
-	cd tests && ./dotfiles.sh
-
 .PHONY: tests
-tests: shellcheck
+tests: shellcheck ## Run shellcheck and tests
 	bats bash/tests
 
 .PHONY: help
