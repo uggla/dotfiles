@@ -155,9 +155,9 @@ getcertnames() {
 # given location
 v() {
   if [ $# -eq 0 ]; then
-    vim .
+    vim -O .
   else
-    vim "$@"
+    vim -O "$@"
   fi
 }
 
