@@ -30,7 +30,7 @@ vim: ## Installs the vim plugins and associated languages.
 
 .PHONY: test_install_fedora
 test_install_fedora: shellcheck ## Run all tests and do an full installation within a Fedora container.
-	cd tests/fedora && ./test_dotfiles.sh
+	cd test_install/fedora && ./test_dotfiles.sh
 
 .PHONY: shellcheck
 shellcheck: ## Runs the shellcheck tests on the scripts.
