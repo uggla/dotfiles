@@ -9,7 +9,7 @@
     include:
       stage: Tests
       script:
-        - make test_install
+        - make test_install_fedora
   # Handle git submodules yourself
   git:
     submodules: false
