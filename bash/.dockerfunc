@@ -110,11 +110,11 @@ notify_send() {
   local args=${*:2}
   docker exec -i notify_osd notify-send "$1" "${args}"
 }
-travis() {
-  docker run -it --rm \
-    -v "${HOME}/.travis:/root/.travis" \
-    -v "$(pwd):/usr/src/repo:ro" \
-    --workdir /usr/src/repo \
-    --log-driver none \
-    ${DOCKER_REPO_PREFIX}/travis "$@"
-}
+# travis() {
+#   docker run -it --rm \
+#     -v "${HOME}/.travis:/root/.travis" \
+#     -v "$(pwd):/usr/src/repo:ro" \
+#     --workdir /usr/src/repo \
+#     --log-driver none \
+#     ${DOCKER_REPO_PREFIX}/travis "$@"
+# }
