@@ -96,6 +96,8 @@ main() {
     backup_regular_file_and_stow vim
     install_languages_to_allow_completion
     install_vim_plugins
+  elif [[ "${PART}" == "tmux" ]]; then
+    backup_regular_file_and_stow tmux
   fi
 }
 

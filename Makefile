@@ -18,6 +18,10 @@ dotfiles: ## Installs the dotfiles.
 vim: ## Installs the vim plugins
 	./install.sh vim
 
+.PHONY: tmux
+tmux: ## Installs the vim plugins
+	./install.sh tmux
+
 .PHONY: etc
 etc: ## Installs the etc directory files.
 	# sudo mkdir -p /etc/docker/seccomp
