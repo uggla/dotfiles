@@ -1,7 +1,7 @@
 #!/usr/bin/env bats
 
 @test "Test powerline is available for aliases" {
-  run powerline version
+  run powerline -h
   [[ "$status" -eq 0 ]]
   [[ "$output" =~ "usage: powerline" ]]
 }
