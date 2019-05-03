@@ -5,8 +5,11 @@
     email: true
   services:
     - docker
-  script:
-    - make tests
+  jobs:
+    include:
+      stage: Tests
+      script:
+        - make tests
   # Handle git submodules yourself
   git:
     submodules: false
