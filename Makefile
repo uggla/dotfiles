@@ -38,7 +38,7 @@ shellcheck: ## Runs the shellcheck tests on the scripts.
 
 .PHONY: tests
 tests: shellcheck ## Run shellcheck and tests
-	bats bash/tests
+	find . -type d -name tests -exec bats {} \;
 
 .PHONY: help
 help:
