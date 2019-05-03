@@ -9,7 +9,7 @@
     include:
       stage: Tests
       script:
-        - make tests
+        - make test_install
   # Handle git submodules yourself
   git:
     submodules: false

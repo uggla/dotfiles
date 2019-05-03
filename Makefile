@@ -30,16 +30,20 @@ tmux: ## Installs the vim plugins
 vim: ## Installs the vim plugins
 	./install.sh vim
 
-.PHONY: tests
-tests: shellcheck docker_test ## Runs all the tests on the files in the repository.
+.PHONY: test_install
+test_install: shellcheck test_docker ## Runs all the tests on the files in the repository.
 
 .PHONY: shellcheck
 shellcheck: ## Runs the shellcheck tests on the scripts.
 	./lint.sh
 
-.PHONY: docker_test
-docker_test:
+.PHONY: test_docker
+test_docker:
 	cd tests && ./dotfiles.sh
+
+.PHONY: tests
+tests: shellcheck
+	bats bash/tests
 
 .PHONY: help
 help:
