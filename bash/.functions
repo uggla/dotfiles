@@ -161,6 +161,14 @@ v() {
   fi
 }
 
+gv() {
+  if [ $# -eq 0 ]; then
+    gvim -O .
+  else
+    gvim -O "$@"
+  fi
+}
+
 # `o` with no arguments opens the current directory, otherwise opens the given
 # location
 o() {
