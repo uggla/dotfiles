@@ -5,14 +5,14 @@ IFS=$'\n\t'
 # if this session isn't interactive, then we don't want to allocate a
 # TTY, which would fail, but if it is interactive, we do want to attach
 case $- in
-  *i*) DOCKER_TERM="-t" ;;
+  *i*) DOCKER_TERM="-it" ;;
   *) DOCKER_TERM="" ;;
 esac
 
 if [[ -f /usr/bin/shellcheck ]]; then
   SHELLCHECK="/usr/bin/shellcheck"
 else
-  SHELLCHECK="docker run --rm -i${DOCKER_TERM} \
+  SHELLCHECK="docker run --rm ${DOCKER_TERM} \
               -v $(pwd):/mnt:ro \
               --workdir /mnt \
               koalaman/shellcheck"
