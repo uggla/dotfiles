@@ -13,7 +13,6 @@ if [[ -f /usr/bin/shellcheck ]]; then
   SHELLCHECK="/usr/bin/shellcheck"
 else
   SHELLCHECK="docker run --rm -i${DOCKER_TERM} \
-              --name shellcheck \
               -v $(pwd):/mnt:ro \
               --workdir /mnt \
               koalaman/shellcheck"
