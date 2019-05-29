@@ -42,7 +42,9 @@ shellcheck: ## Runs the shellcheck tests on the scripts.
 
 .PHONY: tests
 tests: shellcheck ## Run shellcheck and tests
-	find . -type d -name tests -exec bats {} \;
+	for file in $(shell find . -type d -name tests); do \
+		bats "$$file" || exit 1; \
+	done
 
 .PHONY: help
 help:
