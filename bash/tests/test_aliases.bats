@@ -1,7 +1,7 @@
 #!/usr/bin/env bats
 
 shopt -s expand_aliases
-source ../.aliases
+source ${HOME}/.aliases
 
 @test "Test xclip is available for aliases" {
   run xclip -h
