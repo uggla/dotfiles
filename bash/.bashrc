@@ -61,6 +61,6 @@ done
 unset file
 
 # Show system info
-if [[ $(pgrep -fxc bash) -eq 2 ]]; then
+if [[ $(pgrep -fxc bash) -eq 1 ]]; then
   neofetch --disable packages
 fi
