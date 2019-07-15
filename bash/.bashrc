@@ -13,9 +13,10 @@ fi
 
 # Backup .bash_history per session
 function _exit() {
-  cp -p "${HOME}/.bash_history" "${HOME}/.bash_history.$(date "+%Y%m%d-%H%M%S")"
+  CURRENT_DATE=$(date "+%Y%m%d-%H%M%S%N")
+  cp -p "${HOME}/.bash_history" "${HOME}/.bash_history.${CURRENT_DATE}"
   true >"${HOME}/.bash_history"
-  gzip "${HOME}/.bash_history.$(date "+%Y%m%d-%H%M%S")"
+  gzip "${HOME}/.bash_history.${CURRENT_DATE}"
 }
 
 trap _exit EXIT

@@ -161,9 +161,9 @@ v() {
   fi
 }
 
-gv() {
+vv() {
   if [ $# -eq 0 ]; then
-    gvim -O .
+    gvim
   else
     gvim -O "$@"
   fi
