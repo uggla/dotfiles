@@ -76,6 +76,7 @@ install_bfg_via_curl() {
 
 install_languages_to_allow_completion() {
   sudo dnf install -y cmake gcc-c++ make python2-devel python3-devel golang node npm
+  # shellcheck source=/dev/null
   source bash/.exports
   if [[ ! -d "${RUSTUP_HOME}" ]]; then
     cd "${HOME}"
