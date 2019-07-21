@@ -76,11 +76,7 @@ install_bfg_via_curl() {
 
 install_languages_to_allow_completion() {
   sudo dnf install -y cmake gcc-c++ make python2-devel python3-devel golang node npm
-  GOPATH=$(eval echo "$(grep "GOPATH" "${CURDIR}/bash/.exports" | awk '{print $NF}')")
-  export GOPATH
-  export "$(grep "CARGO_HOME" "${CURDIR}/bash/.exports" | awk '{print $NF}')"
-  export "$(grep "RUSTUP_HOME" "${CURDIR}/bash/.exports" | awk '{print $NF}')"
-  export PATH=$PATH:${RUSTUP_HOME}/bin:${GOPATH}/bin
+  source bash/.exports
   if [[ ! -d "${RUSTUP_HOME}" ]]; then
     cd "${HOME}"
     curl https://sh.rustup.rs -sSf -o rust.sh
