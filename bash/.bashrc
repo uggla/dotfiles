@@ -53,6 +53,25 @@ if [[ -f "${HOME}/.travis/travis.sh" ]]; then
   source "${HOME}/.travis/travis.sh"
 fi
 
+# Load fzf completion
+if [[ -f "/usr/share/bash-completion/completions/fzf" ]]; then
+  # Use fd (https://github.com/sharkdp/fd) instead of the default find
+  # command for listing path candidates.
+  # - The first argument to the function ($1) is the base path to start traversal
+  # - See the source code (completion.{bash,zsh}) for the details.
+  _fzf_compgen_path() {
+    fd --hidden --follow --exclude ".git" . "$1"
+  }
+
+  # Use fd to generate the list for directory completion
+  _fzf_compgen_dir() {
+    fd --type d --hidden --follow --exclude ".git" . "$1"
+  }
+
+  # shellcheck source=/dev/null
+  source "/usr/share/bash-completion/completions/fzf"
+fi
+
 for file in ~/.{bash_prompt,aliases,functions,path,dockerfunc,extra,exports,secrets}; do
   if [[ -r "$file" ]] && [[ -f "$file" ]]; then
     # shellcheck source=/dev/null
