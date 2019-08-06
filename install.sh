@@ -22,6 +22,7 @@ install_tools_via_packages() {
   sudo dnf install -y bind-utils \
     curl \
     findutils \
+    fzf \
     gnupg2 \
     java-1.8.0-openjdk \
     neofetch \
