@@ -33,6 +33,8 @@ install_tools_via_packages() {
     pdsh \
     powerline \
     procps-ng \
+    pygobject2 \
+    pygtk2 \
     python \
     sudo \
     tmux-powerline \
