@@ -22,7 +22,7 @@ ERRORS=()
 
 # find all executables and run `shellcheck`
 for f in $(find . -type f -not -path '*.git*' | sort -u); do
-  if file "$f" | grep --quiet shell; then
+  if file "$f" | grep --quiet "shell script"; then
     {
       eval "${SHELLCHECK}" "$f" && echo "[OK]: successfully linted $f"
     } || {
