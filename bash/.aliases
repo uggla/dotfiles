@@ -55,8 +55,8 @@ alias bfg='java -jar /usr/local/bin/bfg-1.13.0.jar'
 alias shist="zgrep '[a-z]' ${HOME}/.bash_history*.gz | sort | awk -F '/' '{print $NF}' | fzf "
 
 # Screenkey
-alias dscreenkey='${HOME}/screenkey/screenkey -p fixed -g $(slop -n -f '%g')'
-alias screenkey='${HOME}/screenkey/screenkey -p fixed'
+alias dscreenkey='python2 ${HOME}/screenkey/screenkey -p fixed -g $(slop -n -f '%g')'
+alias screenkey='python2 ${HOME}/screenkey/screenkey -p fixed'
 
 # Pdsh
 alias pdsh='pdsh -R ssh'
