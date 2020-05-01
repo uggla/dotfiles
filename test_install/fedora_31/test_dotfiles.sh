@@ -10,4 +10,4 @@ if docker ps -a | awk '{print $NF}' | grep test_dotfiles_fedora_31; then
 fi
 docker run --name="test_dotfiles_fedora_31" -id test_dotfiles_fedora_31 bash
 docker exec -ti test_dotfiles_fedora_31 bash -c "cd dotfiles && make all"
-docker exec -ti test_dotfiles_fedora_31 bash -c "find . -type d -name tests -exec bats {} \;"
+docker exec -ti test_dotfiles_fedora_31 bash -c $'cd dotfiles && for file in $(find . -type d -name tests); do bats \"$file\" || exit 1; done'
