@@ -54,7 +54,7 @@ if [[ -f "${HOME}/.travis/travis.sh" ]]; then
 fi
 
 # Load fzf completion
-if [[ -f "/usr/share/bash-completion/completions/fzf" ]]; then
+if [[ -f "/etc/bash_completion.d/fzf" ]]; then
   # Use fd (https://github.com/sharkdp/fd) instead of the default find
   # command for listing path candidates.
   # - The first argument to the function ($1) is the base path to start traversal
@@ -69,7 +69,9 @@ if [[ -f "/usr/share/bash-completion/completions/fzf" ]]; then
   }
 
   # shellcheck source=/dev/null
-  source "/usr/share/bash-completion/completions/fzf"
+  source /usr/share/fzf/shell/key-bindings.bash
+fi
+
 fi
 
 for file in ~/.{bash_prompt,aliases,functions,path,dockerfunc,extra,exports,secrets}; do
