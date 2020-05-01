@@ -86,7 +86,7 @@ install_languages_to_allow_completion() {
     cd "${HOME}"
     curl https://sh.rustup.rs -sSf -o rust.sh
     sh rust.sh -y
-    rustup component add clippy
+    rustup component add clippy rust-src rustfmt
     cargo install cargo-add
     rm rust.sh
     cd "${CURDIR}"
