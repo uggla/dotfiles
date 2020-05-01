@@ -45,19 +45,19 @@ relies_on() {
 #
 # Container Aliases
 #
-aws() {
-  docker run -it --rm \
-    -v "${HOME}/.aws:/root/.aws" \
-    --log-driver none \
-    --name aws \
-    ${DOCKER_REPO_PREFIX}/awscli "$@"
-}
-az() {
-  docker run -it --rm \
-    -v "${HOME}/.azure:/root/.azure" \
-    --log-driver none \
-    ${DOCKER_REPO_PREFIX}/azure-cli "$@"
-}
+# aws() {
+#   docker run -it --rm \
+#     -v "${HOME}/.aws:/root/.aws" \
+#     --log-driver none \
+#     --name aws \
+#     ${DOCKER_REPO_PREFIX}/awscli "$@"
+# }
+# az() {
+#   docker run -it --rm \
+#     -v "${HOME}/.azure:/root/.azure" \
+#     --log-driver none \
+#     ${DOCKER_REPO_PREFIX}/azure-cli "$@"
+# }
 cadvisor() {
   docker run -d \
     --restart always \
