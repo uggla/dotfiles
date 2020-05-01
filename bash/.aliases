@@ -67,7 +67,7 @@ export PDSH_SSH_ARGS_APPEND='-o StrictHostKeyChecking=no'
 alias gpg='gpg2'
 
 # Remote systems
-alias maurice="ssh -p 2200 uggla@uggla.fr"
+alias maurice="ssh -p 2200 -L 36331:localhost:36330 uggla@uggla.fr"
 alias albert='ssh -L5901:localhost:5900 albert@82.233.101.110'
 
 # Proxy
