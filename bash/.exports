@@ -19,7 +19,8 @@ export ANDROID_HOME=$HOME/android-sdk-linux
 export PATH=${PATH}:$HOME/android-sdk-linux:$HOME/android-sdk-linux/platform-tools:$HOME/android-sdk-linux/tools
 
 # Vagrant
-export VAGRANT_DEFAULT_PROVIDER=virtualbox
+#export VAGRANT_DEFAULT_PROVIDER=virtualbox
+export VAGRANT_DEFAULT_PROVIDER=libvirt
 
 # Go
 export GOPATH=$HOME/workspace/go
