@@ -59,6 +59,7 @@ install_screenkey_via_git() {
 install_tpm_via_git() {
   if [[ ! -d ${HOME}/.tmux/plugins/tpm ]]; then
     mkdir -p "${HOME}/.tmux/plugins"
+    cd "${HOME}/.tmux/plugins"
     git clone https://github.com/tmux-plugins/tpm
     cd "${CURDIR}"
   else
