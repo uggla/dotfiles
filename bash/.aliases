@@ -52,7 +52,7 @@ alias bfg='java -jar /usr/local/bin/bfg-1.13.0.jar'
 
 # Search in .bash_history files
 # shellcheck disable=SC2139,SC2142
-alias shist=$'search=$(zgrep -v \'^#\' ${HOME}/.bash_history*.gz | sort -ru | fzf) && read -e -i \"${search}\" && REPLY=$(echo ${REPLY} | awk -F \':\' \'{print $NF}\') && command $REPLY'
+alias shist=$'SEARCH=$(zgrep -v \'^#\' ${HOME}/.bash_history*.gz | sort -ru | fzf) && read -e -i \"${SEARCH}\" && REPLY=$(echo \"${REPLY}\" | awk -F \':\' \'{print $NF}\') && command $REPLY'
 
 # Screenkey
 alias dscreenkey='python ${HOME}/screenkey/screenkey -p fixed -g $(slop -n -f '%g')'
