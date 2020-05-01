@@ -98,6 +98,8 @@ install_vim_plugins() {
     cd vim
     printf "\n" | vim -c ":PlugInstall" -c ":qa!"
     #./YCM.sh
+    cd "${HOME}/.vim/plugged"
+    ln -s /home/uggla/dotfiles/vim/coc-settings.json coc-settings.json
     cd "${CURDIR}"
   fi
 }
