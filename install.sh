@@ -96,7 +96,7 @@ install_vim_plugins() {
   if [[ ! -d "${HOME}/.vim/plugged" ]]; then
     cd vim
     printf "\n" | vim -c ":PlugInstall" -c ":qa!"
-    ./YCM.sh
+    #./YCM.sh
     cd "${CURDIR}"
   fi
 }
