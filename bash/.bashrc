@@ -72,6 +72,10 @@ if [[ -f "/etc/bash_completion.d/fzf" ]]; then
   source /usr/share/fzf/shell/key-bindings.bash
 fi
 
+# Load z
+if [[ -f "$HOME/z/z.sh" ]]; then
+  # shellcheck source=/dev/null
+  source "$HOME/z/z.sh"
 fi
 
 for file in ~/.{bash_prompt,aliases,functions,path,dockerfunc,extra,exports,secrets}; do
