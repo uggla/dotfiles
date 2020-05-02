@@ -28,9 +28,9 @@ tmux: ## Installs the tmux configuration.
 vim: ## Installs the vim plugins and associated languages.
 	./install.sh vim
 
-.PHONY: test_install_fedora_thirty
-test_install_fedora_thirty: shellcheck ## Run all tests and do an full installation within a Fedora 30 container.
-	cd test_install/fedora_30 && ./test_dotfiles.sh
+.PHONY: test_install_fedora_thirty_two
+test_install_fedora_thirty_two: shellcheck ## Run all tests and do an full installation within a Fedora 30 container.
+	cd test_install/fedora_32 && ./test_dotfiles.sh
 
 .PHONY: test_install_fedora_thirty_one
 test_install_fedora_thirty_one: shellcheck ## Run all tests and do an full installation within a Fedora 31 container.
