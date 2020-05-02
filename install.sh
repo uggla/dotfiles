@@ -41,7 +41,8 @@ install_tools_via_packages() {
     tree \
     xclip \
     xdg-utils \
-    xorg-x11-utils
+    xorg-x11-utils \
+    z
 }
 
 install_screenkey_via_git() {
