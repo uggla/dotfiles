@@ -89,7 +89,10 @@ install_languages_to_allow_completion() {
     sh rust.sh -y
     rustup component add clippy rust-src rustfmt
     cargo install cargo-add
+    git clone https://github.com/rust-analyzer/rust-analyzer.git
     rm rust.sh
+    cd rust-analyzer
+    cargo xtask install --server
     cd "${CURDIR}"
   fi
 }
