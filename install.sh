@@ -22,6 +22,7 @@ install_tools_via_packages() {
   sudo dnf install -y bind-utils \
     curl \
     findutils \
+    fd-find \
     fzf \
     gnupg2 \
     java-1.8.0-openjdk \
@@ -36,6 +37,7 @@ install_tools_via_packages() {
     pygobject2 \
     pygtk2 \
     python \
+    ripgrep \
     sudo \
     tmux-powerline \
     tree \
