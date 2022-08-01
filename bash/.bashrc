@@ -14,9 +14,9 @@ fi
 # Backup .bash_history per session
 function _exit() {
   CURRENT_DATE=$(date "+%Y%m%d-%H%M%S%N")
-  cp -p "${HOME}/.bash_history" "${HOME}/.bash_history.${CURRENT_DATE}"
-  true >"${HOME}/.bash_history"
-  gzip "${HOME}/.bash_history.${CURRENT_DATE}"
+  # cp -p "${HOME}/.bash_history" "${HOME}/.bash_history.${CURRENT_DATE}"
+  # true >"${HOME}/.bash_history"
+  # gzip "${HOME}/.bash_history.${CURRENT_DATE}"
 }
 
 trap _exit EXIT
@@ -90,3 +90,7 @@ unset file
 if [[ $(pgrep -fxc bash) -eq 1 ]]; then
   neofetch --disable packages
 fi
+
+# Atuin
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash)"

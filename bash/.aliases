@@ -77,3 +77,11 @@ alias proxy='export http_proxy=http://web-proxy:8088 && export https_proxy=http:
 # lsd
 alias ll='lsd -l'
 alias ls='lsd'
+
+# bat
+alias cat='bat'
+
+# nvim
+alias vi='nvim'
+alias vim='nvim'
+alias vimdiff='nvim -d'
