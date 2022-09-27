@@ -104,4 +104,12 @@ cd() {
 	fi
 }
 
+# Overwrite z alias to run function zover and force a cd into the target directory
+# So it will activate the nova venv if we are in the nova directory
+zover() {
+	_z ${1:+"$@"} 2>&1 && cd .
+}
+
+alias z=zover
+
 cd .
