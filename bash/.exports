@@ -5,7 +5,7 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin:$HOME/workspace/go/bin:$HOME/terraform:$HO
 export PATH
 
 # Editor
-export EDITOR=vim
+export EDITOR=nvim
 
 # Bash history
 export HISTSIZE=-1
@@ -26,8 +26,8 @@ export VAGRANT_DEFAULT_PROVIDER=libvirt
 export GOPATH=$HOME/workspace/go
 
 # Rust
-export CARGO_HOME=/home/uggla/rust
-export RUSTUP_HOME=/home/uggla/rust
+export CARGO_HOME=$HOME/rust
+export RUSTUP_HOME=$HOME/rust
 
 # Git secret
 export SECRETS_GPG_COMMAND='gpg2'

@@ -96,20 +96,5 @@ fi
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 eval "$(atuin init bash)"
 
-cd() {
-	builtin cd ${1:+"$@"} || return
-	if [[ "$PWD" == "$HOME/workspace/openstack/nova" ]]; then
-		# shellcheck source=/dev/null
-		source ~/.virtualenvs/nova/bin/activate
-	fi
-}
-
-# Overwrite z alias to run function zover and force a cd into the target directory
-# So it will activate the nova venv if we are in the nova directory
-zover() {
-	_z ${1:+"$@"} 2>&1 && cd .
-}
-
-alias z=zover
-
-cd .
+# direnv
+eval "$(direnv hook bash)"

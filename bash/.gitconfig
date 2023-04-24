@@ -10,6 +10,8 @@
 
 [core]
   pager = delta
+	editor = nvim
+	excludesfile = ~/.gitignore_global
 
 [interactive]
   diffFilter = delta --color-only
@@ -20,9 +22,10 @@
 
 [merge]
   conflictstyle = diff3
+	tool = nvimdiff
 
 [diff]
-  tool = vimdiff
+	tool = nvimdiff
   colorMoved = default
 
 [rebase]
@@ -30,3 +33,4 @@
 
 [alias]
   fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
+  ireb = "!git rebase -i $(git merge-base $(git branch --show-current) $(git branch -a | grep remotes | sed 's#  remotes/##' | fzf))"
