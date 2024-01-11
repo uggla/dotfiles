@@ -43,8 +43,8 @@ install_tools_via_packages() {
     tree \
     xclip \
     xdg-utils \
-    xorg-x11-utils \
     z
+    # xorg-x11-utils \
 }
 
 install_screenkey_via_git() {
@@ -123,8 +123,8 @@ main() {
   elif [[ "${PART}" == "vim" ]]; then
     install_vim
     backup_regular_file_and_stow vim
-    install_languages_to_allow_completion
-    install_vim_plugins
+    #install_languages_to_allow_completion
+    #install_vim_plugins
   elif [[ "${PART}" == "tmux" ]]; then
     install_tpm_via_git
     backup_regular_file_and_stow tmux
