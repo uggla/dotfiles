@@ -99,12 +99,14 @@ fi
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 eval "$(atuin init bash --disable-up-arrow)"
 
+# direnv
+eval "$(direnv hook bash)"
+
 # Zellij completion
 # shellcheck source=/dev/null
 eval "zellij --version >/dev/null 2>&1" && source <(zellij setup --generate-completion bash)
-
-# direnv
-eval "$(direnv hook bash)"
+# Start zellij if shell is alacritty
+[[ "$TERM" == "alacritty" ]] && eval "$(zellij setup --generate-auto-start bash)"
 
 # ESP32 dev
 [[ -f /home/rribaud/export-esp.sh ]] && source /home/rribaud/export-esp.sh
