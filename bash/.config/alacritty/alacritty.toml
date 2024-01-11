@@ -1,0 +1,27 @@
+[font]
+normal = {family = "SauceCodePro Nerd Font", style = "Regular"}
+size = 10.0
+
+[colors.primary]
+background = "#1A1A1A"
+foreground = "#C4C5B5"
+
+[colors.normal]
+black = "#1A1A1A"
+red = "#F4005F"
+green = "#98E024"
+yellow = "#FA8419"
+blue = "#9D65FF"
+magenta = "#F4005F"
+cyan = "#58D1EB"
+white = "#C4C5B5"
+
+[colors.bright]
+black = "#625E4C"
+red = "#F4005F"
+green = "#98E024"
+yellow = "#E0D561"
+blue = "#9D65FF"
+magenta = "#F4005F"
+cyan = "#58D1EB"
+white = "#F6F6EF"

@@ -96,5 +96,9 @@ fi
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 eval "$(atuin init bash)"
 
+# Zellij completion
+# shellcheck source=/dev/null
+eval "zellij --version >/dev/null 2>&1" && source <(zellij setup --generate-completion bash)
+
 # direnv
 eval "$(direnv hook bash)"
