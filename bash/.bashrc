@@ -30,6 +30,9 @@ if [[ -f "$(command -v powerline-daemon)" ]]; then
 	. /usr/share/powerline/bash/powerline.sh
 fi
 
+# Starship
+# eval "$(starship init bash)"
+
 # Set vi mode
 set -o vi
 
