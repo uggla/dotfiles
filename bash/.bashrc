@@ -41,7 +41,7 @@ shopt -s cdspell
 
 if [ -f "${HOME}/.config/exercism/exercism_completion.bash" ]; then
 	# shellcheck source=/dev/null
-	. "${HOME}/.config/exercism/exercism_completion.bash"
+	source "${HOME}/.config/exercism/exercism_completion.bash"
 fi
 
 # source kubectl bash completion
