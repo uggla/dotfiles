@@ -37,8 +37,9 @@
 [alias]
   fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
   ireb = "!git rebase -i $(git merge-base $(git branch --show-current) $(git branch -a | grep remotes | sed 's#  remotes/##' | fzf))"
-  log1 = "!git log --oneline"
+  l1 = "!git log --oneline"
   s = "status"
+  l = "log"
 
 [includeIf "gitdir:~/**"]
 	path = ~/.gituser
