@@ -2,8 +2,8 @@
   defaultBranch = main
 
 [user]
-  email = rribaud@redhat.com
-  name = René Ribaud
+  email = "uggla@free.fr"
+  name = "Uggla"
 
 [gitreview]
   username = uggla
@@ -39,3 +39,6 @@
   ireb = "!git rebase -i $(git merge-base $(git branch --show-current) $(git branch -a | grep remotes | sed 's#  remotes/##' | fzf))"
   log1 = "!git log --oneline"
   s = "status"
+
+[includeIf "gitdir:~/**"]
+	path = ~/.gituser
