@@ -89,11 +89,6 @@ for file in ~/.{bash_prompt,aliases,functions,path,dockerfunc,extra,exports,secr
 done
 unset file
 
-# Show system info
-if [[ $(pgrep -fxc bash) -eq 1 ]]; then
-	neofetch --disable packages
-fi
-
 # Atuin
 # shellcheck source=/dev/null
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
@@ -110,3 +105,8 @@ eval "zellij --version >/dev/null 2>&1" && source <(zellij setup --generate-comp
 
 # ESP32 dev
 [[ -f "$HOME/export-esp.sh"  ]] && source /home/rribaud/export-esp.sh
+
+# Show system info
+if [[ $(pgrep -fxc bash) -eq 1 ]]; then
+	neofetch --disable packages
+fi
