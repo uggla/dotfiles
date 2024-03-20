@@ -2,14 +2,14 @@
   defaultBranch = main
 
 [user]
-  email = "uggla@free.fr"
-  name = "Uggla"
+	email = "uggla@free.fr"
+	name = "Uggla"
 
 [gitreview]
-  username = uggla
+  username = "uggla"
 
 [github]
-  user = Uggla
+	user = "Uggla"
 
 [core]
   pager = delta
