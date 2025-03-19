@@ -107,6 +107,6 @@ eval "zellij --version >/dev/null 2>&1" && source <(zellij setup --generate-comp
 [[ -f "$HOME/export-esp.sh"  ]] && source /home/rribaud/export-esp.sh
 
 # Show system info
-if [[ $(pgrep -fxc bash) -eq 1 ]]; then
-	neofetch --disable packages
+if [[ $(pgrep -fxc "/usr/bin/bash") -eq 1 ]]; then
+	fastfetch
 fi
