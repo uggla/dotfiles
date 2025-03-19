@@ -104,7 +104,7 @@ eval "zellij --version >/dev/null 2>&1" && source <(zellij setup --generate-comp
 [[ "$TERM" == "alacritty" ]] && eval "$(zellij setup --generate-auto-start bash)"
 
 # ESP32 dev
-[[ -f "$HOME/export-esp.sh"  ]] && source /home/rribaud/export-esp.sh
+[[ -f "$HOME/export-esp.sh" ]] && source /home/rribaud/export-esp.sh
 
 # Show system info
 if [[ $(pgrep -fxc "/usr/bin/bash") -eq 1 ]]; then
