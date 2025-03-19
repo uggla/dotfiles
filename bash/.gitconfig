@@ -1,5 +1,5 @@
 [init]
-  defaultBranch = main
+	defaultBranch = main
 
 [user]
 	email = "uggla@free.fr"
@@ -29,7 +29,10 @@
 
 [diff]
 	tool = nvimdiff
-  colorMoved = default
+	colorMoved = plain
+	algorithm = histogram
+	mnemonicPrefix = true
+	renames = true
 
 [rebase]
   autosquash = true
@@ -46,3 +49,13 @@
 [rerere]
 	enabled = true
 	autoupdate = true
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[push]
+	autoSetupRemote = true
+[commit]
+	verbose = true
+[pull]
+	rebase = true
